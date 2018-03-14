@@ -1,0 +1,28 @@
+{
+  "name": "payfast",
+  "version": "1.0.0",
+  "description": "um gateway para pagamento atravez de recursos http",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://alanrobzureta@gmail.com@github.com/alanrobzureta/projectNode03.git"
+  },
+  "keywords": [
+    "gateway",
+    "pagamentos",
+    "api"
+  ],
+  "author": "Alan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alanrobzureta/projectNode03/issues"
+  },
+  "homepage": "https://github.com/alanrobzureta/projectNode03#readme",
+  "dependencies": {
+    "consign": "^0.1.6",
+    "express": "^4.16.2"
+  }
+}
