@@ -1,0 +1,11 @@
+{"level":"info","message":"consultando pagamento: 5","timestamp":"2018-03-15T18:17:02.104Z"}
+{"level":"info","message":"consultando pagamento: 5","timestamp":"2018-03-15T18:20:10.601Z"}
+{"level":"info","message":"::1 - - [15/Mar/2018:18:20:10 +0000] \"GET /pagamentos/pagamento/5 HTTP/1.1\" 200 127\n","timestamp":"2018-03-15T18:20:10.681Z"}
+{"level":"info","message":"consultando pagamento: 6","timestamp":"2018-03-15T18:21:14.334Z"}
+{"level":"info","message":"::1 - - [15/Mar/2018:18:21:14 +0000] \"GET /pagamentos/pagamento/6 HTTP/1.1\" 202 2\n","timestamp":"2018-03-15T18:21:14.350Z"}
+{"level":"info","message":"consultando pagamento: 5","timestamp":"2018-03-15T18:21:22.511Z"}
+{"level":"info","message":"::1 - - [15/Mar/2018:18:21:22 +0000] \"GET /pagamentos/pagamento/5 HTTP/1.1\" 200 127\n","timestamp":"2018-03-15T18:21:22.518Z"}
+{"level":"info","message":"consultando pagamento: 8","timestamp":"2018-03-15T18:21:42.782Z"}
+{"level":"info","message":"::1 - - [15/Mar/2018:18:21:42 +0000] \"GET /pagamentos/pagamento/8 HTTP/1.1\" 202 2\n","timestamp":"2018-03-15T18:21:42.791Z"}
+{"level":"info","message":"consultando pagamento: 8","timestamp":"2018-03-15T19:02:49.987Z"}
+{"level":"info","message":"::1 - - [15/Mar/2018:19:02:50 +0000] \"GET /pagamentos/pagamento/8 HTTP/1.1\" 202 2\n","timestamp":"2018-03-15T19:02:50.071Z"}

@@ -1,9 +1,54 @@
+let logger = require('../servicos/logger');
 
 module.exports = function(app){
     app.get('/teste', function(req, res){
         console.log('Acessada a rota teste');
-        res.send('Acessada a rota teste pelo cliente');
-    });    
+        var json = {
+            'teste': 'alan',
+            'teste2' : 'adonai'
+        }
+        res.send(json);
+    });   
+    
+    //consulta
+    app.get('/pagamentos/pagamento/:id', function(req, res){
+        let id = req.params.id;
+
+        logger.info('consultando pagamento: ' + id);
+
+        const memcachedClient = app.servicos.memcachedClient();
+
+        memcachedClient.get('pagamento-' + id, function (err, data) {        
+            if (err || !data){
+                console.log('MISS - chave não encontrada no cache');
+
+                pagamentoDao.buscaPorId(id, function(err, result){
+                    if(err){
+                        console.log(err);
+                        res.status(404).send('Erro encontrado: ' + err);
+                        return;
+                    }
+        
+                    console.log(result);
+                    //res.status(202).send('Dados de consulta: ' + JSON.stringify(result));
+                    res.status(202).send(result);
+                    return;
+                });
+            } else {
+                console.log('HIT - valor:' + JSON.stringify(data));
+                res.json(data);
+                return;
+            }
+        });
+
+        var connection = app.persistencia.connectionFactory();
+        var pagamentoDao = new app.persistencia.PagamentosDao(connection);
+
+        
+
+        //console.log('consultando dados do ID: ' + id);
+        //res.send('consultando dados do ID: '+ id);
+    });
 
     app.post('/pagamentos/pagamento', function(req, res){
         var body = req.body;
@@ -72,9 +117,20 @@ module.exports = function(app){
                 pagamento.data = new Date;
         
                 pagamentoDao.salva(pagamento, function(err, result){
+                    if(err){
+                        console.log(err);
+                    }
                     console.log('pagamento criado' + result);
+
                     res.location('/pagamentos/pagamento/' + result.insertId);
                     pagamento.id = result.insertId;
+
+                    // ISERINDO NO CACHE
+                    var cache = app.servicos.memcachedClient();
+                    cache.set('pagamento-' + pagamento.id, result, 100000, function (err) {
+                    console.log('nova chave: pagamento-' + pagamento.id)
+                    });
+                    
                     var response = {
                         dados_do_pagamento: pagamento,
                         links: [

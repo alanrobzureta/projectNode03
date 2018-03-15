@@ -1,4 +1,4 @@
-odule.exports = function(app){
+module.exports = function(app){
 
     app.post('/correios/calculo-prazo', function(req, res){
       var dadosDaEntrega = req.body;
